@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../style/LoginPage.scss";
+import { Icon, Input } from "semantic-ui-react"
 
 function LoginPage() {
     const [Id, setId] = useState("");
@@ -22,19 +23,28 @@ function LoginPage() {
                 <form onSubmit={onSubmitHandler}>
                     <h1>Tunnel</h1>
                     <div className="input-area">
-                        <input type="id" value={Id} autoComplete="off" onChange={onIdHandler} />
-                        <label htmlFor="id">USER ID</label>
+                        <Input
+                            icon={<Icon name='at'/>}
+                            iconPosition='left'
+                            placeholder="Email"
+                            type="text"
+                            value={Id}
+                            autoComplete="off"
+                            onChange={onIdHandler}/>
                     </div>
                     <div className="input-area">
-                        <input
+                        <Input
+                            icon={<Icon name='lock'/>}
+                            iconPosition='left'
+                            placeholder="Password"
                             type="password"
                             value={Password}
-                            onChange={onPasswordHandler}
-                        />
-                        <label htmlFor="password">USER PASSWORD</label>
+                            autoComplete="off"
+                            onChange={onPasswordHandler}/>
                     </div>
                     <div className="btn-area">
-                        <button >Login</button>
+                        <button className="login-btn" >Login</button>
+                        <button className="register-btn" >Register</button>
                     </div>
                 </form>
             </div>

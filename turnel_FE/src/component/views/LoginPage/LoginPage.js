@@ -3,18 +3,18 @@ import "../style/LoginPage.scss";
 import { Icon, Input } from "semantic-ui-react"
 
 function LoginPage() {
-    const [Id, setId] = useState("");
+    const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
 
     const onIdHandler = (event) => {
-        setId(event.currentTarget.value);
+        setEmail(event.currentTarget.value);
     };
     const onPasswordHandler = (event) => {
         setPassword(event.currentTarget.value);
     };
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        console.log("Id", Id);
+        console.log("Email", Email);
         console.log("Password", Password);
     };
     return (
@@ -28,7 +28,7 @@ function LoginPage() {
                             iconPosition='left'
                             placeholder="Email"
                             type="text"
-                            value={Id}
+                            value={Email}
                             autoComplete="off"
                             onChange={onIdHandler}/>
                     </div>

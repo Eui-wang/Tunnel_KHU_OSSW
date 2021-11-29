@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import "../style/LoginPage.scss";
 import { Icon, Input } from "semantic-ui-react"
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
+    const navigate = useNavigate();
+
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
 
@@ -17,6 +20,11 @@ function LoginPage() {
         console.log("Email", Email);
         console.log("Password", Password);
     };
+
+    const goToRegister = () => {
+        navigate('/register');
+    }
+
     return (
         <div id="body">
             <div className="login-form">
@@ -44,7 +52,7 @@ function LoginPage() {
                     </div>
                     <div className="btn-area">
                         <button className="login-btn" >Login</button>
-                        <button className="register-btn" >Register</button>
+                        <button className="register-btn" onClick={()=>goToRegister()} >Register</button>
                     </div>
                 </form>
             </div>

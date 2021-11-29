@@ -1,9 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-#body{
+#Register{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,6 +6,7 @@
   background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("../images/register_background.png");
   background-repeat: no-repeat;
   background-position: center;
+
   .register-form {
     display: flex;
     justify-content: space-around;

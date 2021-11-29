@@ -1,6 +1,7 @@
 import React, {useCallback, useState} from "react";
 import "../style/RegisterPage.scss";
-import { Button, Icon, Input } from "semantic-ui-react"
+import { Form, Message, Button, Icon, Input } from "semantic-ui-react";
+import backgroundImg from "../images/register_background.png";
 
 function RegisterPage() {
     const [Email, setEmail] = useState("");
@@ -20,7 +21,6 @@ function RegisterPage() {
     };
     const onPasswordChkHandler = useCallback((event) => {
         //비밀번호를 입력할때마다 password 를 검증하는 함수
-        setPasswordError(event.currentTarget.value !== Password);
         setPasswordCheck(event.currentTarget.value);
     },[PasswordCheck]);
     const onSubmitHandler = useCallback((event) => {
@@ -28,11 +28,15 @@ function RegisterPage() {
         if(Password !== PasswordCheck){
             return setPasswordError(true);
         }
+        else{
+            return setPasswordError(false);
+        }
         console.log("Email",Email);
         console.log("Password", Password);
     },[Password,PasswordCheck]);
+
     return (
-        <div id="body">
+        <div id="Register">
             <div className="register-form">
                 <form onSubmit={onSubmitHandler}>
                     <h1>Tunnel</h1>
@@ -54,8 +58,18 @@ function RegisterPage() {
                             type="password"
                             value={Password}
                             autoComplete="off"
-                            onChange={onPasswordHandler}/>
-                        {PasswordError && <div style={{color : 'red'}}>!</div>}
+                            onChange={onPasswordHandler}
+                            onFocus={()=>setPasswordError(false)}/>
+                        {PasswordError &&
+                        <Form error>
+                            <Message
+                                error
+                                header='Action Forbidden'
+                                content='You can only sign up for an account once with a given e-mail address.'
+                            />
+                            <Button>Submit</Button>
+                        </Form>
+                        }
                     </div>
                     <div className="input-area">
                         <Input
@@ -65,7 +79,9 @@ function RegisterPage() {
                             type="password"
                             value={PasswordCheck}
                             autoComplete="off"
-                            onChange={onPasswordChkHandler}/>
+                            onChange={onPasswordChkHandler}
+                        onFocus={()=>setPasswordError(false)}/>
+
                     </div>
                     <div className="input-area">
                         <Input
@@ -86,6 +102,7 @@ function RegisterPage() {
                     </div>
                 </form>
             </div>
+
         </div>
     );
 }

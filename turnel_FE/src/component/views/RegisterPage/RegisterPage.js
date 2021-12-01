@@ -1,17 +1,16 @@
 import React, {useCallback, useState} from "react";
 import "../style/RegisterPage.scss";
-import { Form, Message, Button, Icon, Input } from "semantic-ui-react";
-import backgroundImg from "../images/register_background.png";
+import { Button, Icon, Input } from "semantic-ui-react";
 
 function RegisterPage() {
-    const [Email, setEmail] = useState("");
+    const [Id, setId] = useState("");
     const [Password, setPassword] = useState("");
     const [PasswordCheck,setPasswordCheck] = useState("");
     const [Personality, setPersonality] = useState("");
     const [PasswordError,setPasswordError] = useState(false);
 
     const onIdHandler = (event) => {
-        setEmail(event.currentTarget.value);
+        setId(event.currentTarget.value);
     };
     const onPasswordHandler = (event) => {
         setPassword(event.currentTarget.value);
@@ -25,14 +24,15 @@ function RegisterPage() {
     },[PasswordCheck]);
     const onSubmitHandler = useCallback((event) => {
         event.preventDefault();
+        console.log("ID", Id);
+        console.log("Password", Password);
+        console.log("MBTI", Personality);
         if(Password !== PasswordCheck){
             return setPasswordError(true);
         }
         else{
             return setPasswordError(false);
         }
-        console.log("Email",Email);
-        console.log("Password", Password);
     },[Password,PasswordCheck]);
 
     return (
@@ -46,9 +46,19 @@ function RegisterPage() {
                             iconPosition='left'
                             placeholder="Email"
                             type="text"
-                            value={Email}
+                            value={Id}
                             autoComplete="off"
                             required onChange={onIdHandler}/>
+                    </div>
+                    <div className="input-area">
+                        <Input
+                            icon={<Icon name='heart'/>}
+                            iconPosition='left'
+                            placeholder="Your MBTI"
+                            type="text"
+                            value={Personality}
+                            autoComplete="off"
+                            onChange={onPersonalityHandler}/>
                     </div>
                     <div className="input-area">
                         <Input
@@ -61,14 +71,7 @@ function RegisterPage() {
                             onChange={onPasswordHandler}
                             onFocus={()=>setPasswordError(false)}/>
                         {PasswordError &&
-                        <Form error>
-                            <Message
-                                error
-                                header='Action Forbidden'
-                                content='You can only sign up for an account once with a given e-mail address.'
-                            />
-                            <Button>Submit</Button>
-                        </Form>
+                        <div>비밀번호 오류</div>
                         }
                     </div>
                     <div className="input-area">
@@ -81,24 +84,12 @@ function RegisterPage() {
                             autoComplete="off"
                             onChange={onPasswordChkHandler}
                         onFocus={()=>setPasswordError(false)}/>
-
-                    </div>
-                    <div className="input-area">
-                        <Input
-                            icon={<Icon name='heart'/>}
-                            iconPosition='left'
-                            placeholder="Your MBTI"
-                            type="text"
-                            value={Personality}
-                            autoComplete="off"
-                            onChange={onPersonalityHandler}/>
                     </div>
                     <div className="btn-area" >
                         <Button className='register-btn'
                                 content='Sign up'
                                 icon='signup'
-                                size='small'
-                                iconPosition='left'/>
+                                size='small'/>
                     </div>
                 </form>
             </div>

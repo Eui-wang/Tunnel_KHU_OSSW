@@ -1,6 +1,12 @@
 import {Button, Grid, Image, Segment} from "semantic-ui-react"
 import "../style/MainPage.scss";
+import {useNavigate} from "react-router-dom";
+
 function MainPage() {
+    const navigate = useNavigate();
+    const goToLogin = () =>{
+        navigate('/login');
+    }
     return (
         <div id="Main">
             <div className="Main-header">
@@ -8,7 +14,7 @@ function MainPage() {
                     <h1>Tunnel</h1>
                 </div>
                 <div className="None-title">
-                    <Button className="ui right floated button">
+                    <Button className="ui right floated button" onClick={()=>goToLogin()}>
                         Logout
                     </Button>
                 </div>

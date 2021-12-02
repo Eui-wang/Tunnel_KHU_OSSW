@@ -1,6 +1,6 @@
-import {Button, Grid, Image, Segment} from "semantic-ui-react"
+import {Button} from "semantic-ui-react"
 import "../style/MainPage.scss";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function MainPage() {
     const navigate = useNavigate();

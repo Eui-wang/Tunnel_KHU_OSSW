@@ -1,6 +1,4 @@
-import React, {useEffect, useState} from "react";
-import Axios from 'axios'
-import {Link} from "react-router-dom";
+import React, {useState} from "react";
 import "../style/LoginPage.scss";
 import { Icon, Input } from "semantic-ui-react"
 import { useNavigate } from "react-router-dom";

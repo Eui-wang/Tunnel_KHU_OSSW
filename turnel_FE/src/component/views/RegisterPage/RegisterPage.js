@@ -1,17 +1,18 @@
-import React, {useCallback, useState} from "react";
+import React, {useState} from "react";
 import "../style/RegisterPage.scss";
-import { Form, Message, Button, Icon, Input } from "semantic-ui-react";
-import backgroundImg from "../images/register_background.png";
+import { Button, Icon, Input } from "semantic-ui-react";
+import {useDispatch} from "react-redux";
+import { registerUser } from '../../../_actions/user_action'
 
-function RegisterPage() {
-    const [Email, setEmail] = useState("");
+function RegisterPage(props) {
+    const dispatch = useDispatch();
+    const [Id, setId] = useState("");
     const [Password, setPassword] = useState("");
     const [PasswordCheck,setPasswordCheck] = useState("");
     const [Personality, setPersonality] = useState("");
-    const [PasswordError,setPasswordError] = useState(false);
 
     const onIdHandler = (event) => {
-        setEmail(event.currentTarget.value);
+        setId(event.currentTarget.value);
     };
     const onPasswordHandler = (event) => {
         setPassword(event.currentTarget.value);
@@ -19,22 +20,32 @@ function RegisterPage() {
     const onPersonalityHandler = (event) => {
         setPersonality(event.currentTarget.value);
     };
-    const onPasswordChkHandler = useCallback((event) => {
+    const onPasswordChkHandler = (event) => {
         //비밀번호를 입력할때마다 password 를 검증하는 함수
         setPasswordCheck(event.currentTarget.value);
-    },[PasswordCheck]);
-    const onSubmitHandler = useCallback((event) => {
+    };
+    const onSubmitHandler = (event) => {
         event.preventDefault();
-        if(Password !== PasswordCheck){
-            return setPasswordError(true);
-        }
-        else{
-            return setPasswordError(false);
-        }
-        console.log("Email",Email);
+        console.log("ID", Id);
         console.log("Password", Password);
-    },[Password,PasswordCheck]);
-
+        console.log("MBTI", Personality);
+        if (Password !== PasswordCheck) {
+            return alert('비밀번호가 일치하지 않습니다.')
+        }
+        let body = {
+            id: Id,
+            password: Password,
+            personality: Personality
+        }
+        dispatch(registerUser(body))
+            .then(response => {
+                if (response.payload.registerSuccess) {
+                    props.history.push('/login')
+                } else {
+                    alert('Failed to sign up')
+                }
+            })
+    }
     return (
         <div id="Register">
             <div className="register-form">
@@ -42,46 +53,13 @@ function RegisterPage() {
                     <h1>Tunnel</h1>
                     <div className="input-area">
                         <Input
-                            icon={<Icon name='at'/>}
+                            icon={<Icon name="id badge"/>}
                             iconPosition='left'
-                            placeholder="Email"
+                            placeholder="ID"
                             type="text"
-                            value={Email}
+                            value={Id}
                             autoComplete="off"
                             required onChange={onIdHandler}/>
-                    </div>
-                    <div className="input-area">
-                        <Input
-                            icon={<Icon name='lock'/>}
-                            iconPosition='left'
-                            placeholder="Password"
-                            type="password"
-                            value={Password}
-                            autoComplete="off"
-                            onChange={onPasswordHandler}
-                            onFocus={()=>setPasswordError(false)}/>
-                        {PasswordError &&
-                        <Form error>
-                            <Message
-                                error
-                                header='Action Forbidden'
-                                content='You can only sign up for an account once with a given e-mail address.'
-                            />
-                            <Button>Submit</Button>
-                        </Form>
-                        }
-                    </div>
-                    <div className="input-area">
-                        <Input
-                            icon={<Icon name='check'/>}
-                            iconPosition='left'
-                            placeholder="Check your Password"
-                            type="password"
-                            value={PasswordCheck}
-                            autoComplete="off"
-                            onChange={onPasswordChkHandler}
-                        onFocus={()=>setPasswordError(false)}/>
-
                     </div>
                     <div className="input-area">
                         <Input
@@ -93,18 +71,35 @@ function RegisterPage() {
                             autoComplete="off"
                             onChange={onPersonalityHandler}/>
                     </div>
+                    <div className="input-area">
+                        <Input
+                            icon={<Icon name='lock'/>}
+                            iconPosition='left'
+                            placeholder="Password"
+                            type="password"
+                            value={Password}
+                            autoComplete="off"
+                            onChange={onPasswordHandler}/>
+                    </div>
+                    <div className="input-area">
+                        <Input
+                            icon={<Icon name='check'/>}
+                            iconPosition='left'
+                            placeholder="Check your Password"
+                            type="password"
+                            value={PasswordCheck}
+                            autoComplete="off"
+                            onChange={onPasswordChkHandler}/>
+                    </div>
                     <div className="btn-area" >
                         <Button className='register-btn'
                                 content='Sign up'
                                 icon='signup'
-                                size='small'
-                                iconPosition='left'/>
+                                size='small'/>
                     </div>
                 </form>
             </div>
-
         </div>
     );
 }
-
 export default RegisterPage;

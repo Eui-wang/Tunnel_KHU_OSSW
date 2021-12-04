@@ -1,30 +1,46 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "../style/LoginPage.scss";
 import { Icon, Input } from "semantic-ui-react"
 import { useNavigate } from "react-router-dom";
+import {useDispatch} from "react-redux";
+import { loginUser } from '../../../_actions/user_action'
 
-function LoginPage() {
+function LoginPage(props) {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const [Email, setEmail] = useState("");
+    const [Id, setId] = useState("");
     const [Password, setPassword] = useState("");
 
     const onIdHandler = (event) => {
-        setEmail(event.currentTarget.value);
+        setId(event.currentTarget.value);
     };
     const onPasswordHandler = (event) => {
         setPassword(event.currentTarget.value);
     };
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        console.log("Email", Email);
+        console.log("ID", Id);
         console.log("Password", Password);
+        let body = {
+            email: Id,
+            password: Password
+        }
+        dispatch(loginUser(body))
+            .then(response => {
+                if (response.payload.loginSuccess) {
+                    props.history.push('/main')
+                }
+                else{
+                    alert('Error')
+                }
+            })
+
     };
 
     const goToRegister = () => {
         navigate('/register');
     }
-
     return (
         <div id="body">
             <div className="login-form">
@@ -34,9 +50,9 @@ function LoginPage() {
                         <Input
                             icon={<Icon name='at'/>}
                             iconPosition='left'
-                            placeholder="Email"
+                            placeholder="ID"
                             type="text"
-                            value={Email}
+                            value={Id}
                             autoComplete="off"
                             onChange={onIdHandler}/>
                     </div>

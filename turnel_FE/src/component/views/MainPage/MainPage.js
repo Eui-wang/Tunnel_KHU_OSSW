@@ -1,6 +1,14 @@
-import {Button, Grid, Image, Segment} from "semantic-ui-react"
+import {Button} from "semantic-ui-react"
 import "../style/MainPage.scss";
+import { useNavigate } from "react-router-dom";
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 function MainPage() {
+    const navigate = useNavigate();
+    const goToLogin = () =>{
+        navigate('/login');
+    }
     return (
         <div id="Main">
             <div className="Main-header">
@@ -8,7 +16,7 @@ function MainPage() {
                     <h1>Tunnel</h1>
                 </div>
                 <div className="None-title">
-                    <Button className="ui right floated button">
+                    <Button className="ui right floated button" onClick={()=>goToLogin()}>
                         Logout
                     </Button>
                 </div>
@@ -26,7 +34,24 @@ function MainPage() {
                     </div>
                     <div className="contents">
                         <div className="ui segment">
-                            <p>a</p>
+                            <CKEditor
+                                editor={ClassicEditor}
+                                data="<p>Hello from CKEditor 5!</p>"
+                                onReady={editor => {
+                                    // You can store the "editor" and use when it is needed.
+                                    console.log('Editor is ready to use!', editor);
+                                }}
+                                onChange={(event, editor) => {
+                                    const data = editor.getData();
+                                    console.log({ event, editor, data });
+                                }}
+                                onBlur={(event, editor) => {
+                                    console.log('Blur.', editor);
+                                }}
+                                onFocus={(event, editor) => {
+                                    console.log('Focus.', editor);
+                                }}
+                            />
                         </div>
                         <div className="ui segment">
                             <p>a</p>
@@ -45,7 +70,7 @@ function MainPage() {
                                 tabIndex="0">
                             <div className="visible content">도착한 글</div>
                             <div className="hidden content">
-                                <i className="pencil alternate icon"></i>
+                                <i className="paper plane ic    on"></i>
                             </div>
                         </Button>
                     </div>

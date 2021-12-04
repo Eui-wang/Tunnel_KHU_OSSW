@@ -8,17 +8,18 @@ const bodyParser = require("body-parser");
 
 dotenv.config();
 const indexRouter = require('./routes/index.js');
-const userRouter = require('./routes/login.js');
+const loginRouter = require('./routes/login.js');
 const registerRouter = require('./routes/regiser.js');
 
 const app = express();
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3001);
 const port = app.get('port'); 
 
 //미들웨어 설정
 app.use(morgan('dev'));
 app.use(express.json()); //json형식으로 데이터 전달
 app.use(express.urlencoded({extende: false})); // url형식으로 형식으로 데이터 전달
+app.use(bodyParser().json); 
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(session({
     resave: false,
@@ -31,10 +32,13 @@ app.use(session({
     name: 'session-cookie',
 }));
 
+
 //라우팅
-app.use('/',indexRouter);
-app.use('/login',userRouter);
-app.use('/register',registerRouter);
+//app.use('/',indexRouter);
+//app.use('/login',loginRouter);
+
+app.use('/',loginRouter); //로그인 페이지
+app.use('/register',registerRouter); // 회원가입 페이지
 
 
 //에러처리 미들웨어

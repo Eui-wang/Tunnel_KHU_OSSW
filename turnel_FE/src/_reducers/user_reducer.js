@@ -8,7 +8,7 @@ export default function (state = {}, action) {
             return { ...state, loginSuccess: action.payload }
             break;
         case REGISTER_USER:
-            return {...state, registerSuccess: action.payload}
+            return {...state, register: action.payload}
             break;
         default:
             return state;

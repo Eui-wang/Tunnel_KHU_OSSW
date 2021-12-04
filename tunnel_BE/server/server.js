@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 dotenv.config();
 const indexRouter = require('./routes/index.js');
 const loginRouter = require('./routes/login.js');
-const registerRouter = require('./routes/regiser.js');
+const registerRouter = require('./routes/register.js');
 
 const app = express();
 app.set('port', process.env.PORT || 3001);
@@ -19,7 +19,6 @@ const port = app.get('port');
 app.use(morgan('dev'));
 app.use(express.json()); //json형식으로 데이터 전달
 app.use(express.urlencoded({extende: false})); // url형식으로 형식으로 데이터 전달
-app.use(bodyParser().json); 
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(session({
     resave: false,
@@ -37,8 +36,9 @@ app.use(session({
 //app.use('/',indexRouter);
 //app.use('/login',loginRouter);
 
-app.use('/',loginRouter); //로그인 페이지
-app.use('/register',registerRouter); // 회원가입 페이지
+
+app.use('/api/register',registerRouter); // 회원가입 페이지
+app.use('/api/login',loginRouter); //로그인 페이지
 
 
 //에러처리 미들웨어

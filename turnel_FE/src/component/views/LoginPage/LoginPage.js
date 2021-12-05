@@ -19,14 +19,8 @@ function LoginPage(props) {
         event.preventDefault();
         console.log("ID", Id);
         console.log("Password", Password);
-        let body = {
-            email: Id,
-            password: Password
-        }
     
-
-    };
-
+    };  
     const goToRegister = () => {
         navigate('/register');
     }

@@ -2,26 +2,21 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const router = express.Router();
 
-router.post('/',(req,res)=>{
-    console.log(req.body);
-    return res.status(200).json({
-        success: true
-    });
+router.get('/',(req,res)=>{
+    res.send('회원가입 페이지');
 });
 
-router.get('/',(req,res)=>{
-    //res.json({id: "hi"});
-    //console.log(res.body);
+router.post('/',(req,res)=>{
+    console.log(req.body);
+    return res.json({a: "hi"});
 });
 
 //라우트 매개변수사용 
 //뒤에 위치 요구
-/*
 router.get("/:id",(req,res)=>{
     console.log(req.params, req.query);
-    //req.body;
+    req.body;
 });
-*/
 
 
 

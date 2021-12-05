@@ -2,11 +2,8 @@ import React, {useState} from "react";
 import "../style/LoginPage.scss";
 import { Icon, Input } from "semantic-ui-react"
 import { useNavigate } from "react-router-dom";
-import {useDispatch} from "react-redux";
-import { loginUser } from '../../../_actions/user_action'
 
 function LoginPage(props) {
-    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const [Id, setId] = useState("");
@@ -26,15 +23,7 @@ function LoginPage(props) {
             email: Id,
             password: Password
         }
-        dispatch(loginUser(body))
-            .then(response => {
-                if (response.payload.loginSuccess) {
-                    props.history.push('/main')
-                }
-                else{
-                    alert('Error')
-                }
-            })
+    
 
     };
 

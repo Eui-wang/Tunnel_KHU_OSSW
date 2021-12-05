@@ -1,11 +1,9 @@
 import React, {useState} from "react";
 import "../style/RegisterPage.scss";
 import { Button, Icon, Input } from "semantic-ui-react";
-import {useDispatch} from "react-redux";
-import { registerUser } from '../../../_actions/user_action'
+import Axios from 'axios'
 
-function RegisterPage(props) {
-    const dispatch = useDispatch();
+function RegisterPage() {
     const [Id, setId] = useState("");
     const [Password, setPassword] = useState("");
     const [PasswordCheck,setPasswordCheck] = useState("");
@@ -37,14 +35,7 @@ function RegisterPage(props) {
             password: Password,
             personality: Personality
         }
-        dispatch(registerUser(body))
-            .then(response => {
-                if (response.payload.success) {
-                    props.history.push('/login')
-                } else {
-                    alert('Failed to sign up')
-                }
-            })
+       
     }
     return (
         <div id="Register">

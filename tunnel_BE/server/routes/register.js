@@ -4,6 +4,9 @@ const router = express.Router();
 
 router.post('/',(req,res)=>{
     console.log(req.body);
+    return res.status(200).json({
+        success: true
+    });
 });
 
 router.get('/',(req,res)=>{

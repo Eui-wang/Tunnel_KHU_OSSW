@@ -4,19 +4,11 @@ import {Provider} from "react-redux";
 import './index.css';
 import App from './App';
 import 'semantic-ui-css/semantic.min.css'
-import {applyMiddleware, createStore} from "redux";
-import promiseMiddleware from 'redux-promise-middleware'
-import ReduxThunk from 'redux-thunk'
-import Reducer from './_reducers';
 
-const createStoreWithMiddleWare = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore)
 ReactDOM.render(
-      <Provider  store={createStoreWithMiddleWare(Reducer,
-          window.__REDUX_DEVTOOLS_EXTENSION__ &&
-          window.__REDUX_DEVTOOLS_EXTENSION__()
-      )}>
-          <App />
-      </Provider>,
+      
+          <App />,
+      
   document.getElementById('root')
 );
 

@@ -6,6 +6,10 @@ router.get('/',(req,res)=>{
     res.send('회원가입 페이지');
 });
 
+router.post('/',(req,res)=>{
+    return res.status(201).json({success: true})
+});
+
 //라우트 매개변수사용 
 //뒤에 위치 요구
 router.get("/:id",(req,res)=>{

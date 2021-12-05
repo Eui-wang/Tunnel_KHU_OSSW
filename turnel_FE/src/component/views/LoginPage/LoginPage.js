@@ -23,7 +23,7 @@ function LoginPage(props) {
         console.log("ID", Id);
         console.log("Password", Password);
         let body = {
-            email: Id,
+            id: Id,
             password: Password
         }
         dispatch(loginUser(body))
@@ -35,9 +35,7 @@ function LoginPage(props) {
                     alert('Error')
                 }
             })
-
     };
-
     const goToRegister = () => {
         navigate('/register');
     }

@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1e8140c-05b3-40e9-ab0b-098f82d0a906" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/tunnel_BE/server/routes/regiser.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tunnel_BE/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel_BE/server/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/turnel_FE/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/turnel_FE/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/turnel_FE/src/_actions/user_action.js" beforeDir="false" afterPath="$PROJECT_DIR$/turnel_FE/src/_actions/user_action.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/turnel_FE/src/component/views/LoginPage/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/turnel_FE/src/component/views/LoginPage/LoginPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/turnel_FE/src/setupProxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/turnel_FE/src/setupProxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +24,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/turnel_FE" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -50,6 +45,8 @@
       <workItem from="1638631542578" duration="3985000" />
       <workItem from="1638641485255" duration="60000" />
       <workItem from="1638641565668" duration="11802000" />
+      <workItem from="1638769052031" duration="25000" />
+      <workItem from="1638769217172" duration="23000" />
     </task>
     <servers />
   </component>

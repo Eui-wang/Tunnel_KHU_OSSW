@@ -1,0 +1,67 @@
+<회원 정보>
+CREATE TABLE tunnel.users(
+id INT NOT NULL AUTO_INCREMENT,
+name VARCHAR(30) NOT NULL,
+pw VARCHAR(30) NOT NULL,
+personality CHAR(4) NOT NULL,
+status TINYINT NOT NULL,
+PRIMARY KEY(id),
+UNIQUE INDEX name_UNIQUE (name ASC)
+)
+COMMENT = 'user information'
+DEFAULT CHARACTER SET = utf8
+ENGINE = InnoDB;
+
+<사용자 게시물>
+CREATE TABLE  tunnel.posts(
+id INT NOT NULL AUTO_INCREMENT,
+userid VARCHAR(30) NOT NULL,
+post TEXT NOT NULL,
+created_at DATETIME NOT NULL DEFAULT now(),
+status TINYINT NOT NULL,
+PRIMARY KEY(id),
+INDEX userid_idx (userid ASC),
+CONSTRAINT commenter FOREIGN KEY (userid) REFERENCES tunnel.users (name)
+ON DELETE CASCADE
+ON UPDATE CASCADE)
+
+COMMENT = 'post information'
+DEFAULT CHARACTER SET = utf8
+ENGINE = InnoDB;
+
+<후 처리>
+ALTER TABLE tunnel.posts MODIFY post TEXT CHARACTER SET utf8mb4;
+:게시물에 이모지 사용가능하게 칼럼 수정.
+
+<댓글>
+CREATE TABLE  tunnel.comments(
+id INT NOT NULL AUTO_INCREMENT,
+postid INT NOT NULL,
+userid VARCHAR(30) NOT NULL,
+created_at DATETIME NOT NULL DEFAULT now(),
+comment TEXT NOT NULL,
+PRIMARY KEY(id),
+INDEX postid_idx (postid ASC),
+CONSTRAINT post_id FOREIGN KEY (postid) REFERENCES tunnel.posts (id)
+ON DELETE CASCADE
+ON UPDATE CASCADE,
+CONSTRAINT user_id FOREIGN KEY (userid) REFERENCES tunnel.users (name)
+ON UPDATE CASCADE
+)
+
+COMMENT = 'post information'
+DEFAULT CHARACTER SET = utf8
+ENGINE = InnoDB;
+
+<후 처리>
+ALTER TABLE tunnel.comments MODIFY comment TEXT CHARACTER SET utf8mb4;
+: 댓글에 이모지 사용가능하게 칼럼 수정.
+
+
+
+<명령어>
+show databases;
+use tunnel;
+show tables;
+DESC tunnel.users ; 	#유저테이블 자세히 보기
+DROP TABLE tunnel.users;	 #유저테이블 지우기

@@ -10,13 +10,9 @@ function BoardModal({viewContent, onViewContentHandler}) {
     }
     const [open, setOpen] = useState(false)
     const [BoardContent, setBoardContent] = useState({
-        id: 0,
         title: '',
         content:''
     })
-    const initialBoard = () => {
-        setBoardContent()
-    }
     const getValue = e => {
         const {name, value} = e.target;
         setBoardContent({

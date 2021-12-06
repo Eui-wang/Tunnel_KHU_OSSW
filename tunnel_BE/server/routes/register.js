@@ -12,13 +12,13 @@ router.get('/',(req,res)=>{
 
 router.post('/',(req,res)=>{
     User.create({
-        name: '고병후',
-        pw:'1234',
-        personality:'infj',
-        status:0
+        name: req.body.Id,
+        pw:req.body.Password,
+        personality:req.body.Personality,
+        status:false
     })
     console.log(req.body);
-    return res.json({a: "hi"});
+    return res.sendStatus(200);
 });
 
 //라우트 매개변수사용 

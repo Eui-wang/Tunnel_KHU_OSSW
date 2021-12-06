@@ -2,16 +2,10 @@ import React, {useState} from "react";
 import "../style/LoginPage.scss";
 import { Icon, Input } from "semantic-ui-react"
 import { useNavigate } from "react-router-dom";
-import {useDispatch} from "react-redux";
-import { loginUser } from '../../../_actions/user_action'
-
 function LoginPage(props) {
-    const dispatch = useDispatch();
     const navigate = useNavigate();
-
     const [Id, setId] = useState("");
     const [Password, setPassword] = useState("");
-
     const onIdHandler = (event) => {
         setId(event.currentTarget.value);
     };
@@ -22,19 +16,7 @@ function LoginPage(props) {
         event.preventDefault();
         console.log("ID", Id);
         console.log("Password", Password);
-        let body = {
-            id: Id,
-            password: Password
-        }
-        dispatch(loginUser(body))
-            .then(response => {
-                if (response.payload.loginSuccess) {
-                    props.history.push('/main')
-                }
-                else{
-                    alert('Error')
-                }
-            })
+
     };
     const goToRegister = () => {
         navigate('/register');
@@ -73,5 +55,4 @@ function LoginPage(props) {
         </div>
     );
 }
-
 export default LoginPage;

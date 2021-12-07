@@ -13,6 +13,7 @@ dotenv.config();
 const indexRouter = require('./routes/index.js');
 const loginRouter = require('./routes/login.js');
 const registerRouter = require('./routes/register.js');
+const mainRouter = require('./routes/main.js');
 
 const app = express();
 app.set('port', process.env.PORT || 3001);
@@ -47,6 +48,7 @@ app.use(session({
 //라우팅
 app.use('/api/register',registerRouter); // 회원가입 페이지
 app.use('/api/login',loginRouter); //로그인 페이지
+app.use('/api/main',mainRouter);//메인페이지
 
 
 //에러처리 미들웨어

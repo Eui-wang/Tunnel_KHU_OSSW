@@ -22,7 +22,7 @@ function RegisterPage(props) {
         //비밀번호를 입력할때마다 password 를 검증하는 함수
         setPasswordCheck(event.currentTarget.value);
     };
-    const onSubmitHandler = useCallback((event) => {
+    const onSubmitHandler = (event) => {
         event.preventDefault();
         console.log("ID", Id);
         console.log("Password", Password);
@@ -46,7 +46,7 @@ function RegisterPage(props) {
                 alert("중복된 아이디입니다.")
             })
         }
-    },[Id, Password, Personality, PasswordCheck])
+    }
     return (
         <div id="Register">
             <div className="register-form">

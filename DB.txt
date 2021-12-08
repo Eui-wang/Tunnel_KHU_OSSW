@@ -29,9 +29,6 @@ COMMENT = 'post information'
 DEFAULT CHARACTER SET = utf8
 ENGINE = InnoDB;
 
-<후 처리>
-ALTER TABLE tunnel.posts MODIFY post TEXT CHARACTER SET utf8mb4;
-:게시물에 이모지 사용가능하게 칼럼 수정.
 
 <댓글>
 CREATE TABLE  tunnel.comments(
@@ -44,8 +41,6 @@ PRIMARY KEY(id),
 INDEX postid_idx (postid ASC),
 CONSTRAINT post_id FOREIGN KEY (postid) REFERENCES tunnel.posts (id)
 ON DELETE CASCADE
-ON UPDATE CASCADE,
-CONSTRAINT user_id FOREIGN KEY (userid) REFERENCES tunnel.users (name)
 ON UPDATE CASCADE
 )
 
@@ -53,6 +48,11 @@ COMMENT = 'post information'
 DEFAULT CHARACTER SET = utf8
 ENGINE = InnoDB;
 
+[후처리 보류]
+
+<후 처리>
+ALTER TABLE tunnel.posts MODIFY post TEXT CHARACTER SET utf8mb4;
+:게시물에 이모지 사용가능하게 칼럼 수정.
 <후 처리>
 ALTER TABLE tunnel.comments MODIFY comment TEXT CHARACTER SET utf8mb4;
 : 댓글에 이모지 사용가능하게 칼럼 수정.
@@ -60,6 +60,8 @@ ALTER TABLE tunnel.comments MODIFY comment TEXT CHARACTER SET utf8mb4;
 
 
 <명령어>
+SELECT * FROM tunnel.users
+mysql -h localhost -u root -p
 show databases;
 use tunnel;
 show tables;

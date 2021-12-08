@@ -25,7 +25,7 @@ router.post('/',(req,res)=>{
             res.status(401).send("pwError");
         }
         else if(result.dataValues.pw == req.body.Password){
-            req.session.id = result.dataValues.id;
+            req.session.userid = result.dataValues.id;
             req.session.name = result.dataValues.name;
             req.session.personality = result.dataValues.personality;
             req.session.status = result.dataValues.status;

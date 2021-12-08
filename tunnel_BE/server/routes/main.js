@@ -9,7 +9,7 @@ router.get('/',auth,(req,res)=>{
     //메인페이지
 
     //테스트 코드
-    console.log(req.session.id);
+    console.log(req.session.userid);
     res.send(req.session.name);
 });
 

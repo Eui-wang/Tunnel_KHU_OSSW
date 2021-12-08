@@ -1,12 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const router = express.Router();
-
+const auth = require("../obj/authorize");
 const {User}=require('../models');
 
-router.get('/',(req,res)=>{
-    
-});
 
 //로그아웃
 router.post('/',(req,res)=>{
@@ -18,5 +15,6 @@ router.post('/',(req,res)=>{
     console.log("Logout");
     res.sendStatus(200);
 })
+
 
     module.exports = router;

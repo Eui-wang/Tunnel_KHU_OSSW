@@ -16,6 +16,8 @@ const registerRouter = require('./routes/register.js');
 const mainRouter = require('./routes/main.js');
 const logoutRouter = require('./routes/logout.js');
 const authRouter = require('./routes/auth.js');
+const userRouter = require('./routes/user.js');
+const postRouter = require('./routes/post.js');
 
 const app = express();
 app.set('port', process.env.PORT || 3001);
@@ -53,6 +55,8 @@ app.use('/api/login',loginRouter); //로그인 페이지
 app.use('/api/main',mainRouter);//메인페이지
 app.use('/api/auth',authRouter);//가입여부 확인
 app.use('/api/logout',logoutRouter);//로그아웃
+app.use('/api/user',userRouter);//유저정보 응답
+app.use('/api/post',postRouter);//유저정보 응답
 
 
 

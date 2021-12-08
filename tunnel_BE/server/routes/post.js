@@ -8,29 +8,34 @@ const {Post}=require('../models'); //게시물정보 db연결
 
 //현재 로그인된 사용자의 게시물 배열 응답
 router.get('/',auth,(req,res)=>{
+
     Post.findAll({
-        where:{userid: req.session.name}
+        //where:{userid: req.session.name}
      })
      .then((result)=>{
+        //console.log(result);
+        res.send(result);
          //게시물이 0개인 경우
-         if(result === null || result === undefined){
-             console.log("해당유저의 게시물이 없습니다.")
-             res.status(401).send("null");
-         }
-         else{
-             console.log(result.length);
-             res.sendStatus(200);
-         }
-     })    
+        //  if(result === null || result === undefined){
+        //      console.log("해당유저의 게시물이 없습니다.")
+        //      res.status(401).send("null");
+        //  }
+        //  else{
+            //  console.log(result.length);
+            //  res.sendStatus(200);
+        //  }
+     })
 });
+     
+
 
 //게시물 작성
 router.post('/',auth,(req,res)=>{
     try{
     Post.create({
         userid : req.session.name,
-        title : "프로트랑 맞추기",
-        post:"프론트랑 맞추기",
+        title : req.body.title,
+        post: req.body.content,
         status: false
     })
     console.log("게시");

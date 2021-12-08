@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
-import { Button, Header, Image, Modal } from 'semantic-ui-react'
+import Axios from 'axios'
+import { Button, Modal } from 'semantic-ui-react'
 import {CKEditor} from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-function BoardModal({onViewContentHandler}) {
+function BoardModal() {
     const handleClose = (event) => {
         event.preventDefault();
         setOpen(false);
@@ -11,7 +12,7 @@ function BoardModal({onViewContentHandler}) {
     const [open, setOpen] = useState(false)
     const [BoardContent, setBoardContent] = useState({
         title: '',
-        content:''
+        content:'',
     })
     const getValue = e => {
         const {name, value} = e.target;
@@ -20,6 +21,29 @@ function BoardModal({onViewContentHandler}) {
             [name]: value
         })
         console.log(BoardContent);
+    }
+    const onSubmitHandler = () => {
+        Axios.post('/api/post',{
+                    title: BoardContent.title,
+                    content: BoardContent.content,
+                })
+                .then((res)=>{
+                    if(res.status === 200){
+                        alert("게시글 작성을 완료하였습니다.")
+                    }
+                }).catch((error) => {
+                    console.log(error.response)
+                    alert("게시글 작성을 실패하였습니다.")
+                })
+        // console.log("ID", Id);
+        // console.log("Password", Password);
+        // console.log("MBTI", Personality);
+        // if (Password !== PasswordCheck) {
+        //     return alert('비밀번호가 일치하지 않습니다.')
+        // }
+        // else{
+        //     
+        // }
     }
     return (
         <Modal
@@ -34,7 +58,7 @@ function BoardModal({onViewContentHandler}) {
             </Button>}
         >
             <Modal.Header>고민이 있나요?</Modal.Header>
-            <Modal.Content content>
+            <Modal.Content >
                 <Modal.Description>
                     <div className="form=wrapper">
                         <input className="title-input"
@@ -70,18 +94,18 @@ function BoardModal({onViewContentHandler}) {
                 </Modal.Description>
             </Modal.Content>
             <Modal.Actions>
-                <div onClick={handleClose}>
-                    <Button color='black'>
-                        작성 취소
-                    </Button>
-                    <Button
-                        content="글 작성하기"
-                        labelPosition='right'
-                        icon='checkmark'
-                        onClick={()=> onViewContentHandler(BoardContent)}
-                        positive
-                    />
-                </div>
+            <div onClick={handleClose}>
+                        <Button color='black'>
+                            작성 취소
+                        </Button>
+                            <Button
+                                content="글 작성하기"
+                                labelPosition='right'
+                                icon='checkmark'
+                                onClick={onSubmitHandler}
+                                positive
+                            />  
+                    </div>
             </Modal.Actions>
         </Modal>
     )

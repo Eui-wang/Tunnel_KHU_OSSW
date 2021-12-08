@@ -6,9 +6,11 @@ import "./static/fonts/font.css";
 import LandingPage from "./component/views/LandingPage/LandingPage";
 
 function App () {
+  let isAuthorized = sessionStorage.getItem("isAuthorized"); // 
   return (
       <Router>
         <div>
+        {!isAuthorized ? <Redirect to="/login" /> : <Redirect to="/" />}
           <Routes>
               <Route exact path = "/" element={<LandingPage/>}/>
               <Route exact path = "/login" element={<LoginPage/>}/>

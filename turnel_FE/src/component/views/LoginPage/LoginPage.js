@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import "../style/LoginPage.scss";
+import Axios from 'axios'
 import { Icon, Input } from "semantic-ui-react"
 import { useNavigate } from "react-router-dom";
 
@@ -19,8 +20,24 @@ function LoginPage(props) {
         event.preventDefault();
         console.log("ID", Id);
         console.log("Password", Password);
-    
-    };  
+        Axios.post('/api/login',{
+            Id, 
+            Password,
+        })
+        .then((res)=>{
+            if(res.status === 200){
+                alert("성공적으로 로그인하였습니다.")
+                navigate('/main')
+            }
+        }).catch((error) => {
+            if(error.response.data === 'idError'){
+                alert("존재하지 않는 아이디입니다.")
+            }
+            else if(error.response.data === 'pwError'){
+                alert("잘못된 비밀번호입니다.")
+            }    
+        })
+    };
     const goToRegister = () => {
         navigate('/register');
     }

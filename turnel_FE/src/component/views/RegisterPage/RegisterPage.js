@@ -45,9 +45,9 @@ function RegisterPage(props) {
                 }
             }).catch((error) => {
                 console.log(error.response)
+                alert("중복된 아이디입니다.")
             })
         }
-       
     },[Id, Password, Personality, PasswordCheck])
     return (
         <div id="Register">

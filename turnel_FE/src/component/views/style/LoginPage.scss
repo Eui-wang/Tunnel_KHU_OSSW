@@ -31,7 +31,6 @@
     margin-top: 20px;
     font-weight: bold;
     font-size: medium;
-
     input {
       width: 75%;
       padding: 15px .8em .8em;
@@ -42,7 +41,6 @@
       color: white;
       outline: none;
     }
-
     label {
       position: absolute;
       left: 10px;
@@ -55,7 +53,6 @@
     display: flex;
     justify-content: space-evenly;
     margin-top: 30px;
-
     .login-btn {
       width: 150px;
       height: 50px;
@@ -80,4 +77,3 @@
     }
   }
 }
-

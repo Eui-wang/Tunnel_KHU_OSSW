@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {useState} from 'react';
 import '../style/Board.scss'
 import {CKEditor} from "@ckeditor/ckeditor5-react";
@@ -24,10 +25,30 @@ function Board() {
             <div className="contents-container">
                 {viewContent.map(element =>
                     <div>
+=======
+import React, { useState} from 'react';
+import '../style/Board.scss'
+import ReactHtmlParser from 'react-html-parser';
+import BoardModal from "../Modal/BoardModal";
+
+function Board() {
+    const [viewContent,setViewContent] = useState([]);
+    const onViewContentHandler = (data) => {
+        setViewContent((viewContent.concat({...data})))
+    }
+    return (
+        <div className="Board">
+            <div className="write-button">
+                <BoardModal onViewContentHandler={onViewContentHandler}/>
+            </div>
+            {viewContent.map(element =>
+                    <div class="ui segment">
+>>>>>>> board
                         <h2>{element.title}</h2>
                         <div>
                             {ReactHtmlParser(element.content)}
                         </div>
+<<<<<<< HEAD
                     </div>)
                 }
             </div>
@@ -75,6 +96,10 @@ function Board() {
                     </Button>
                 </div>
             </div>
+=======
+                    </div>
+                )}
+>>>>>>> board
         </div>
 
     );

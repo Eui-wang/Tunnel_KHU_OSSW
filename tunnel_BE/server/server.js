@@ -13,11 +13,14 @@ dotenv.config();
 const indexRouter = require('./routes/index.js');
 const loginRouter = require('./routes/login.js');
 const registerRouter = require('./routes/register.js');
+<<<<<<< HEAD
 const mainRouter = require('./routes/main.js');
 const logoutRouter = require('./routes/logout.js');
 const authRouter = require('./routes/auth.js');
 const userRouter = require('./routes/user.js');
 const postRouter = require('./routes/post.js');
+=======
+>>>>>>> board
 
 const app = express();
 app.set('port', process.env.PORT || 3001);
@@ -36,6 +39,10 @@ sequelize.sync({force: false})
 app.use(morgan('dev'));
 app.use(express.json()); //json형식으로 데이터 전달
 app.use(express.urlencoded({extende: false})); // url형식으로 형식으로 데이터 전달
+<<<<<<< HEAD
+=======
+//app.use(bodyParser().json); 
+>>>>>>> board
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(session({
     resave: false,
@@ -58,6 +65,11 @@ app.use('/api/logout',logoutRouter);//로그아웃
 app.use('/api/user',userRouter);//유저정보 응답
 app.use('/api/post',postRouter);//유저정보 응답
 
+<<<<<<< HEAD
+=======
+//app.use('/',loginRouter); //로그인 페이지
+app.use('/api/register',registerRouter); // 회원가입 페이지
+>>>>>>> board
 
 
 //에러처리 미들웨어
@@ -65,7 +77,6 @@ app.use('/api/post',postRouter);//유저정보 응답
 app.use((req,res,next)=>{
     console.log("유저가 존재하지 않은 경로 접근");
     res.status(404).send("NOT FOUND");
-
 });
 
 //포트를 연다.

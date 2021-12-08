@@ -3,8 +3,13 @@ import "../style/LoginPage.scss";
 import Axios from 'axios'
 import { Icon, Input } from "semantic-ui-react"
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 function LoginPage() {
     let navigate = useNavigate();
+=======
+function LoginPage(props) {
+    const navigate = useNavigate();
+>>>>>>> board
     const [Id, setId] = useState("");
     const [Password, setPassword] = useState("");
     const onIdHandler = (event) => {
@@ -17,6 +22,7 @@ function LoginPage() {
         event.preventDefault();
         console.log("ID", Id);
         console.log("Password", Password);
+<<<<<<< HEAD
         Axios.post('/api/login',{
             Id, 
             Password,
@@ -34,6 +40,9 @@ function LoginPage() {
                 alert("잘못된 비밀번호입니다.")
             }    
         })
+=======
+
+>>>>>>> board
     };
     const goToRegister = () => {
         navigate('/register');

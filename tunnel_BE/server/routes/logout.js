@@ -5,6 +5,7 @@ const auth = require("../obj/authorize");
 const {User}=require('../models');
 
 
+
 //로그아웃
 router.post('/',(req,res)=>{
     req.session.id = null;
@@ -15,6 +16,4 @@ router.post('/',(req,res)=>{
     console.log("Logout");
     res.sendStatus(200);
 })
-
-
-    module.exports = router;
+module.exports = router;

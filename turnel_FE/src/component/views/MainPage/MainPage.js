@@ -4,9 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-function MainPage() {
+function MainPage(props) {
+    const isLogin = props.isLogin;
     const navigate = useNavigate();
-    const goToLogin = () =>{
+    const onLogout = () => {
+    	// sessionStorage 에 user_id 로 저장되어있는 아이템을 삭제한다.
+        sessionStorage.removeItem('isAuthorized')
+        // App 으로 이동(새로고침)
         navigate('/login');
     }
     return (
@@ -16,7 +20,7 @@ function MainPage() {
                     <h1>Tunnel</h1>
                 </div>
                 <div className="None-title">
-                    <Button className="ui right floated button" onClick={()=>goToLogin()}>
+                    <Button className="ui right floated button" onClick={()=>onLogout()}>
                         Logout
                     </Button>
                 </div>

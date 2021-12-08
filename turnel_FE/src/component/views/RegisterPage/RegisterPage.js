@@ -97,8 +97,7 @@ function RegisterPage(props) {
                     <div className="btn-area" >
                         <Button className='register-btn'
                                 content='Sign up'
-                                icon='signup'
-                                size='small'/>
+                                icon='signup'/>
                     </div>
                 </form>
             </div>

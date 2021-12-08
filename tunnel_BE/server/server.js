@@ -14,6 +14,8 @@ const indexRouter = require('./routes/index.js');
 const loginRouter = require('./routes/login.js');
 const registerRouter = require('./routes/register.js');
 const mainRouter = require('./routes/main.js');
+const logoutRouter = require('./routes/logout.js');
+const authRouter = require('./routes/auth.js');
 
 const app = express();
 app.set('port', process.env.PORT || 3001);
@@ -49,6 +51,9 @@ app.use(session({
 app.use('/api/register',registerRouter); // 회원가입 페이지
 app.use('/api/login',loginRouter); //로그인 페이지
 app.use('/api/main',mainRouter);//메인페이지
+app.use('/api/auth',authRouter);//가입여부 확인
+app.use('/api/logout',logoutRouter);//로그아웃
+
 
 
 //에러처리 미들웨어

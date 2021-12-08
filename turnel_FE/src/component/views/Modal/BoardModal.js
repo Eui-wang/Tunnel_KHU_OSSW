@@ -3,7 +3,7 @@ import { Button, Header, Image, Modal } from 'semantic-ui-react'
 import {CKEditor} from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-function BoardModal({viewContent, onViewContentHandler}) {
+function BoardModal({onViewContentHandler}) {
     const handleClose = (event) => {
         event.preventDefault();
         setOpen(false);
@@ -57,7 +57,6 @@ function BoardModal({viewContent, onViewContentHandler}) {
                                     ...BoardContent,
                                     content: data,
                                 })
-
                                 console.log(BoardContent);
                             }}
                             onBlur={(event, editor) => {

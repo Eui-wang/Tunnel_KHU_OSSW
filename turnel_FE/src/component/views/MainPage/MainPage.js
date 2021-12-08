@@ -13,7 +13,7 @@ function MainPage() {
         <div id="Main">
             <div className="Main-header">
                 <div className="title">
-                    <h1>Tunnel</h1>
+                    <h1>"말하기 어려운 고민 여기에 털어놓으세요 :)"</h1>
                 </div>
                 <div className="None-title">
                     <Button className="ui right floated button" onClick={()=>goToLogin()}>
@@ -23,7 +23,7 @@ function MainPage() {
             </div>
             <div className="Main-body">
                 <Board/>
-                <div className="user-container">
+                {/* <div className="user-container">
                     <div className="userInfo">
                         <h1>User ID</h1>
                     </div>
@@ -49,7 +49,7 @@ function MainPage() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );

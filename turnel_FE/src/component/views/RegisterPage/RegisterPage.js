@@ -3,14 +3,12 @@ import { useNavigate } from "react-router-dom";
 import "../style/RegisterPage.scss";
 import { Button, Icon, Input } from "semantic-ui-react";
 import Axios from 'axios'
-
 function RegisterPage(props) {
     const navigate = useNavigate();
     const [Id, setId] = useState("");
     const [Password, setPassword] = useState("");
     const [PasswordCheck,setPasswordCheck] = useState("");
     const [Personality, setPersonality] = useState("");
-
     const onIdHandler = (event) => {
         setId(event.currentTarget.value);
     };

@@ -5,21 +5,18 @@ import LoginPage from "./component/views/LoginPage/LoginPage";
 import RegisterPage from "./component/views/RegisterPage/RegisterPage";
 import "./static/fonts/font.css";
 import Auth from './hoc/auth';
-
 function App () {
   return (
       <Router>
         <div>
-        <Routes>
-          <Route exact path="/main" element={Auth(MainPage, true)} /> 
-          <Route exact path="/login" element={Auth(LoginPage , false)}>
-          </Route>
-          <Route exact path="/register" element={Auth(RegisterPage , false)}>
-          </Route>
-        </Routes>
+          <Routes>
+            <Route exact path="/" element={Auth(LoginPage , false)}/> 
+            <Route exact path="/login" element={Auth(LoginPage , false)}/> 
+            <Route exact path="/main" element={Auth(MainPage, true)} />
+            <Route exact path="/register" element={Auth(RegisterPage , false)}/>
+          </Routes>
         </div>
       </Router>
   );
 }
-
 export default App;

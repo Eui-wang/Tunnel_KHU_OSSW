@@ -1,17 +1,20 @@
 import {Button} from "semantic-ui-react"
+import Axios from'axios'
 import "../style/MainPage.scss";
 import { useNavigate } from "react-router-dom";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 function MainPage(props) {
-    const isLogin = props.isLogin;
     const navigate = useNavigate();
     const onLogout = () => {
-    	// sessionStorage 에 user_id 로 저장되어있는 아이템을 삭제한다.
-        sessionStorage.removeItem('isAuthorized')
-        // App 으로 이동(새로고침)
-        navigate('/login');
+        Axios.post('/api/logout')
+        .then((res)=>{
+            if(res.status === 200){
+                alert("성공적으로 로그아웃하였습니다.")
+                navigate('/login')
+            }
+        })    // App 으로 이동(새로고침)
     }
     return (
         <div id="Main">
@@ -96,5 +99,4 @@ function MainPage(props) {
         </div>
     );
 }
-
 export default MainPage;

@@ -3,7 +3,6 @@ import "../style/LoginPage.scss";
 import Axios from 'axios'
 import { Icon, Input } from "semantic-ui-react"
 import { useNavigate } from "react-router-dom";
-
 function LoginPage() {
     let navigate = useNavigate();
     const [Id, setId] = useState("");

@@ -41,7 +41,4 @@ router.get("/:id",(req,res)=>{
     console.log(req.params, req.query);
     req.body;
 });
-
-
-
 module.exports = router;

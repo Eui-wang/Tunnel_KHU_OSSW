@@ -2,11 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const router = express.Router();
 
-
-
 router.get('/',(req,res)=>{
     if (req.session.name != null && req.session.name != undefined){
-        console.log("req.session.name");
+        console.log(req.session.name);
         res.sendStatus(200);
     }
 	else{
@@ -14,8 +12,4 @@ router.get('/',(req,res)=>{
         res.sendStatus(401);
     }
 });
-
-
-
-
 module.exports = router;

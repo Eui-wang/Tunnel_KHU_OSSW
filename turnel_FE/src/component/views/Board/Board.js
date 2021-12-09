@@ -1,8 +1,6 @@
 import Axios from 'axios';
 import React, { useState, useEffect} from 'react';
 import '../style/Board.scss'
-
-import BoardModal from "../Modal/BoardModal";
 import ContentModal from '../Modal/ContentModal';
 
 function Board() {
@@ -16,9 +14,6 @@ function Board() {
       },[viewContent])
     return (
         <div className="Board">
-            <div className="write-button">
-                <BoardModal/>
-            </div>
             <div className="contents">
              {viewContent&&viewContent.map(element =>{
                 return <div className="ui segment">

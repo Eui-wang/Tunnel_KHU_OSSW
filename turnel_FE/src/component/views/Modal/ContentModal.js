@@ -42,8 +42,8 @@ function ContentModal({element}) {
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
             open={open}
-            trigger={<Button basic color='purple' className="ui animated button" tabIndex="0">
-                <div className="visible content">보기</div>
+            trigger={<Button basic color='purple' className="ui floated button" tabIndex="0">
+                보기
             </Button>}
         >
             <Modal.Header><h2>{element.title}</h2></Modal.Header>
@@ -57,7 +57,7 @@ function ContentModal({element}) {
             <Modal.Content>
                 {viewComment&&viewComment.map(elem =>{  
                     return <div className="ui segment">
-                                <h2>{elem.userid}</h2>
+                                <h4>{elem.userid}</h4>
                                  <h4>{elem.comment}</h4>
                             </div>}
                         )}

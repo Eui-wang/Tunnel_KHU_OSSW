@@ -51,12 +51,9 @@ function BoardModal() {
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
             open={open}
-            trigger={<Button className="ui animated button" tabIndex="0">
-                <div className="visible content">게시글 작성하기</div>
-                <div className="hidden content">
-                    <i className="pencil alternate icon"></i>
-                </div>
-            </Button>}
+            trigger={<Button className="ui right floated button" tabIndex="0" >
+                게시글 작성하기
+            </Button>}  
         >
             <Modal.Header>고민이 있나요?</Modal.Header>
             <Modal.Content >

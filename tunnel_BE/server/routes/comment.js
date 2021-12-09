@@ -12,11 +12,7 @@ const {Comment}=require('../models');
 router.post('/reply',auth,(req,res)=>{
 
     Comment.findAll({
-<<<<<<< HEAD
-        where:{postid: req.params.id},
-=======
         where:{postid: req.body.id},
->>>>>>> a7a00ce3dcec95df5fd17594f215fe752568dfa5
         order: [['created_at', 'ASC']],
      })
      .then((result)=>{
@@ -40,11 +36,7 @@ router.post('/write',auth,(req,res)=>{
     try{
     Comment.create({
         userid : req.session.name,
-<<<<<<< HEAD
-        postid : req.body.id,
-=======
         postid : req.body.postid,
->>>>>>> a7a00ce3dcec95df5fd17594f215fe752568dfa5
         comment : req.body.comment,
     })
     console.log("게시");

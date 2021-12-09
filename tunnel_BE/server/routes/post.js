@@ -10,11 +10,7 @@ const {Post}=require('../models'); //게시물정보 db연결
 router.get('/',auth,(req,res)=>{
     Post.findAll({
         // where:{userid: req.session.name},
-<<<<<<< HEAD
-        // order: [['created_at', 'DESC']],
-=======
         order: [['created_at', 'DESC']],
->>>>>>> a7a00ce3dcec95df5fd17594f215fe752568dfa5
      })
      .then((result)=>{
         //console.log(result);

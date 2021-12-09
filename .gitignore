@@ -3,7 +3,6 @@ tunnel_BE/server/node_modules
 # dependencies
 /.pnp
 .pnp.js
->>>>>>> board
 
 ### VisualStudioCode ###
 .vscode/*

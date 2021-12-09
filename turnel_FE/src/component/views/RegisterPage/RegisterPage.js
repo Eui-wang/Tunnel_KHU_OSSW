@@ -1,7 +1,7 @@
 import React, {useState, useCallback} from "react";
 import { useNavigate } from "react-router-dom";
 import "../style/RegisterPage.scss";
-import { Button, Icon, Input } from "semantic-ui-react";
+import { Button, Dropdown, Icon, Input} from "semantic-ui-react";
 import Axios from 'axios'
 function RegisterPage(props) {
     const navigate = useNavigate();
@@ -16,7 +16,7 @@ function RegisterPage(props) {
         setPassword(event.currentTarget.value);
     };
     const onPersonalityHandler = (event) => {
-        setPersonality(event.currentTarget.value);
+        setPersonality(event.currentTarget.value.toUpperCase());
     };
     const onPasswordChkHandler = (event) => {
         //비밀번호를 입력할때마다 password 를 검증하는 함수
@@ -29,6 +29,11 @@ function RegisterPage(props) {
         console.log("MBTI", Personality);
         if (Password !== PasswordCheck) {
             return alert('비밀번호가 일치하지 않습니다.')
+        }
+        else if((Personality[0] !== 'I' && Personality[0] !== 'E') || (Personality[1] !== 'S' && Personality[1] !== 'N')
+        || (Personality[2] !== 'F' && Personality[2] !== 'T') || (Personality[3] !== 'J' && Personality[3] !== 'P'))
+        { 
+            return alert('올바르지 않은 MBTI입니다.')
         }
         else{
             Axios.post('/api/register',{
@@ -67,6 +72,7 @@ function RegisterPage(props) {
                             icon={<Icon name='heart'/>}
                             iconPosition='left'
                             placeholder="Your MBTI"
+                            maxlength='4'
                             type="text"
                             value={Personality}
                             autoComplete="off"

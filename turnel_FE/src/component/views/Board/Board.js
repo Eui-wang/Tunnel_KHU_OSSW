@@ -3,6 +3,7 @@ import React, { useState, useEffect} from 'react';
 import '../style/Board.scss'
 import ReactHtmlParser from 'react-html-parser';
 import BoardModal from "../Modal/BoardModal";
+import ContentModal from '../Modal/ContentModal';
 
 function Board() {
     const [viewContent,setViewContent] = useState([]);
@@ -22,9 +23,8 @@ function Board() {
              {viewContent&&viewContent.map(element =>{
                 return <div className="ui segment">
                             <h2>{element.title}</h2>
-                            <div>
-                                {ReactHtmlParser(element.post)}
-                            </div>
+                            <h4>{element.created_at.slice(0,10)+" " +element.created_at.slice(11,16)}</h4>
+                            <ContentModal element={element}/>
                         </div>}
                     )} 
             </div>

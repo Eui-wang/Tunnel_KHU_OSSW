@@ -17,24 +17,15 @@ function ContentModal({element}) {
         setOpen(false);
     }
     const [open, setOpen] = useState(false)
-<<<<<<< HEAD
     const [BoardComment, setBoardComment] = useState('')
-=======
-    const [BoardComment, setBoardComment] = useState("")
->>>>>>> a7a00ce3dcec95df5fd17594f215fe752568dfa5
     const onCommentHandler = (event) => {
         setBoardComment(event.currentTarget.value)
         console.log(BoardComment)
     }
     const onSubmitHandler = () => { 
-<<<<<<< HEAD
-        Axios.post(`/api/comment${element.id}`,{
-                    content: BoardComment
-=======
         Axios.post('/api/comment/write',{
                 postid: element.id,    
                 comment: BoardComment
->>>>>>> a7a00ce3dcec95df5fd17594f215fe752568dfa5
                 })
                 .then((res)=>{
                     if(res.status === 200){
@@ -64,25 +55,19 @@ function ContentModal({element}) {
                 </Modal.Description>
             </Modal.Content>
             <Modal.Content>
-                 {viewComment&&viewComment.map(elem =>{
+                {viewComment&&viewComment.map(elem =>{  
                     return <div className="ui segment">
-<<<<<<< HEAD
-                                <h2>{elem.id}</h2>
-=======
                                 <h2>{elem.userid}</h2>
->>>>>>> a7a00ce3dcec95df5fd17594f215fe752568dfa5
-                                <h4>{elem.comment}</h4>
+                                 <h4>{elem.comment}</h4>
                             </div>}
-                        )} 
+                        )}
             </Modal.Content>
             <Modal.Actions>
-            <Comment>
+                <Comment>
                 <Form reply>
                     <Form.TextArea value={BoardComment} onChange={onCommentHandler}/>
-                    <div onClick={handleClose}>
                         <Button content='댓글 남기기' onClick={onSubmitHandler} labelPosition='left' icon='edit' primary />
                         <Button onClick={handleClose} color='black'>닫기</Button>
-                    </div>
                 </Form>
                 </Comment>
             </Modal.Actions>

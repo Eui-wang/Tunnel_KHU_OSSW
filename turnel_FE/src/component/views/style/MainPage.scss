@@ -2,10 +2,14 @@
   background-color: beige;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   .Main-header{
+    text-align: center;
     display: flex;
     flex-direction: row;
     height: 70px;
+    width: 100%;
     .title{
       display: flex;
       justify-content: center;
@@ -19,7 +23,7 @@
     }
     .None-title{
       display: flex;
-      justify-content: center;
+      justify-content:start;
       align-items: center;
       width: 10%;
       .ui button{
@@ -30,6 +34,9 @@
   .Main-body{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
     height: 100vh;
     border: 3px solid black;
     .Board{

@@ -7,11 +7,12 @@ const {User}=require('../models'); //유저정보 db연결
 const {Post}=require('../models'); //게시물정보 db연결
 const {Comment}=require('../models');
 
+
 //현재 로그인된 사용자의 게시물 배열 응답
-router.get('/:boardId',auth,(req,res)=>{
+router.post('/reply',auth,(req,res)=>{
 
     Comment.findAll({
-        where:{postid: req.params.boardId},
+        where:{postid: req.body.id},
         order: [['created_at', 'ASC']],
      })
      .then((result)=>{
@@ -28,15 +29,14 @@ router.get('/:boardId',auth,(req,res)=>{
         //  }
      })
 });
-     
-
 
 //게시물 작성
-router.post('/:boardId',auth,(req,res)=>{
+router.post('/write',auth,(req,res)=>{
+    console.log(req.params.id);
     try{
     Comment.create({
         userid : req.session.name,
-        postid : req.params.boardId,
+        postid : req.body.postid,
         comment : req.body.comment,
     })
     console.log("게시");
@@ -54,6 +54,10 @@ router.post('/:boardId',auth,(req,res)=>{
                 status:false
                 */
 });
+
+     
+
+
 
 
 module.exports = router;

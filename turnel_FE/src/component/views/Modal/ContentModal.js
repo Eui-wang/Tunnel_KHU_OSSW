@@ -7,8 +7,8 @@ import '../style/ContentModal.scss'
 function ContentModal({element}) {
     const [viewComment,setviewComment] = useState([]);
     useEffect(()=>{
-        Axios.get('/api/comment/'+element.id).then((response)=>{
-          setviewComment(response.data);
+        Axios.post('/api/comment/reply',{id : element.id}).then((response)=>{
+            setviewComment(response.data);
         })
       },[viewComment])
 
@@ -17,22 +17,20 @@ function ContentModal({element}) {
         setOpen(false);
     }
     const [open, setOpen] = useState(false)
-    const [BoardComment, setBoardComment] = useState({
-        id: null,
-        content:''
-    })
+    const [BoardComment, setBoardComment] = useState("")
     const onCommentHandler = (event) => {
         setBoardComment(event.currentTarget.value)
         console.log(BoardComment)
     }
-    const onSubmitHandler = () => {
-        Axios.post('/api/comment',{
-                    id: element.id,
-                    content: BoardComment
+    const onSubmitHandler = () => { 
+        Axios.post('/api/comment/write',{
+                postid: element.id,    
+                comment: BoardComment
                 })
                 .then((res)=>{
                     if(res.status === 200){
                         alert("댓글 작성을 완료하였습니다.")
+                        setOpen(false);
                     }
                 }).catch((error) => {
                     console.log(error.response)
@@ -57,20 +55,20 @@ function ContentModal({element}) {
                 </Modal.Description>
             </Modal.Content>
             <Modal.Content>
-                {viewComment&&viewComment.map(elem =>{
+                 {viewComment&&viewComment.map(elem =>{
                     return <div className="ui segment">
-                                <h2>{elem.title}</h2>
-                                <h4>{elem.created_at.slice(0,10)+" " +elem.created_at.slice(11,16)}</h4>
+                                <h2>{elem.userid}</h2>
+                                <h4>{elem.comment}</h4>
                             </div>}
-                        )}
+                        )} 
             </Modal.Content>
             <Modal.Actions>
-                <Comment>
+            <Comment>
                 <Form reply>
-                    <Form.TextArea onChange={onCommentHandler}/>
+                    <Form.TextArea value={BoardComment} onChange={onCommentHandler}/>
                     <div onClick={handleClose}>
-                        <Button content='댓글 남기기' labelPosition='left' icon='edit' primary onSubmit={onSubmitHandler}/>
-                        <Button color='black'>닫기</Button>
+                        <Button content='댓글 남기기' onClick={onSubmitHandler} labelPosition='left' icon='edit' primary />
+                        <Button onClick={handleClose} color='black'>닫기</Button>
                     </div>
                 </Form>
                 </Comment>

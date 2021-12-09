@@ -8,9 +8,8 @@ const {Post}=require('../models'); //게시물정보 db연결
 
 //현재 로그인된 사용자의 게시물 배열 응답
 router.get('/',auth,(req,res)=>{
-
     Post.findAll({
-        where:{userid: req.session.name},
+        // where:{userid: req.session.name},
         order: [['created_at', 'DESC']],
      })
      .then((result)=>{

@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import React, { useState, useEffect} from 'react';
 import '../style/Board.scss'
-import ReactHtmlParser from 'react-html-parser';
+
 import BoardModal from "../Modal/BoardModal";
 import ContentModal from '../Modal/ContentModal';
 

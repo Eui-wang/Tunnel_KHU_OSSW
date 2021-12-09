@@ -4,6 +4,7 @@ import { Button, Modal } from 'semantic-ui-react'
 import {CKEditor} from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
+
 function BoardModal() {
     const handleClose = (event) => {
         event.preventDefault();

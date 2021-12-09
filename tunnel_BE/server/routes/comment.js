@@ -11,7 +11,7 @@ const {Comment}=require('../models');
 router.get('/:boardId',auth,(req,res)=>{
 
     Comment.findAll({
-        where:{postid: req.params.boardId},
+        where:{postid: req.params.id},
         order: [['created_at', 'ASC']],
      })
      .then((result)=>{
@@ -36,7 +36,7 @@ router.post('/:boardId',auth,(req,res)=>{
     try{
     Comment.create({
         userid : req.session.name,
-        postid : req.params.boardId,
+        postid : req.body.id,
         comment : req.body.comment,
     })
     console.log("게시");

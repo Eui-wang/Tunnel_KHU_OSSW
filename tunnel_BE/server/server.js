@@ -18,6 +18,7 @@ const logoutRouter = require('./routes/logout.js');
 const authRouter = require('./routes/auth.js');
 const userRouter = require('./routes/user.js');
 const postRouter = require('./routes/post.js');
+const commentRouter = require('./routes/comment.js');
 
 const app = express();
 app.set('port', process.env.PORT || 3001);
@@ -57,6 +58,7 @@ app.use('/api/auth',authRouter);//가입여부 확인
 app.use('/api/logout',logoutRouter);//로그아웃
 app.use('/api/user',userRouter);//유저정보 응답
 app.use('/api/post',postRouter);//유저정보 응답
+app.use('/api/comment',commentRouter);//유저정보 응답
 
 
 //에러처리 미들웨어

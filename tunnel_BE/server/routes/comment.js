@@ -5,13 +5,14 @@ const auth = require("../obj/authorize");
 
 const {User}=require('../models'); //유저정보 db연결
 const {Post}=require('../models'); //게시물정보 db연결
+const {Comment}=require('../models');
 
 //현재 로그인된 사용자의 게시물 배열 응답
-router.get('/',auth,(req,res)=>{
+router.get('/:boardId',auth,(req,res)=>{
 
-    Post.findAll({
-        where:{userid: req.session.name},
-        order: [['created_at', 'DESC']],
+    Comment.findAll({
+        where:{postid: req.params.boardId},
+        order: [['created_at', 'ASC']],
      })
      .then((result)=>{
         //console.log(result);
@@ -31,13 +32,12 @@ router.get('/',auth,(req,res)=>{
 
 
 //게시물 작성
-router.post('/',auth,(req,res)=>{
+router.post('/:boardId',auth,(req,res)=>{
     try{
-    Post.create({
+    Comment.create({
         userid : req.session.name,
-        title : req.body.title,
-        post: req.body.content,
-        status: false
+        postid : req.params.boardId,
+        comment : req.body.comment,
     })
     console.log("게시");
     res.sendStatus(200);

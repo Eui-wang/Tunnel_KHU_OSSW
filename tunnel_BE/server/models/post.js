@@ -35,5 +35,6 @@ module.exports = class Post extends Sequelize.Model {
 
     static associate(db) {
         db.Post.belongsTo(db.User,{foreignKey: 'userid', targetKey:'name' });
+        db.Post.hasMany(db.Post,{foreignKey: 'postid', sourceKey:'id' });
     }
 };

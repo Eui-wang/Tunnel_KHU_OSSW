@@ -69,9 +69,9 @@
 
 ### Built With
 
-> * [React.js](https://reactjs.org/) -- front end
-> * [Node.js](https://nodejs.org/) -- back end
-> * [MySQL](https://www.mysql.com/) -- database
+> * [React.js](https://reactjs.org/) -- front end (Jeong Eui wang)
+> * [Node.js](https://nodejs.org/) -- back end (Ko byung hoo, Oh in jae)
+> * [MySQL](https://www.mysql.com/) -- database (Ko byung hoo)
 > * [AWS](https://aws.amazon.com/) -- server
 
 
@@ -199,8 +199,8 @@ Distributed under the [MIT License](License).
 ## Contact
 
 > - 오인제 (seanoh@khu.ac.kr)
-> - 정의왕 (@khu.ac.kr)
-> - 고병후 (@khu.ac.kr)
+> - 정의왕 (wang323@khu.ac.kr)
+> - 고병후 (gobyeonghu@khu.ac.kr)
 
 Project Link: [http://khuhub.khu.ac.kr/2019102198/Tunnel.git](http://khuhub.khu.ac.kr/2019102198/Tunnel.git)
 
